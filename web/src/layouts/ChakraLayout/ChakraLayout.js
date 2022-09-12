@@ -1,3 +1,4 @@
+import { InfoIcon, MoonIcon, SunIcon } from '@chakra-ui/icons'
 import {
   Avatar,
   Box,
@@ -94,6 +95,7 @@ const ChakraLayout = ({ children }) => {
         <NavItem icon={HiCode}>Integrations</NavItem>
         <NavItem icon={AiFillGift}>Changelog</NavItem>
         <NavItem icon={BsGearFill}>Settings</NavItem>
+        <NavItem icon={InfoIcon}>About</NavItem>
       </Flex>
     </Box>
   )
@@ -101,9 +103,9 @@ const ChakraLayout = ({ children }) => {
   function LightOrDark() {
     const { colorMode, toggleColorMode } = useColorMode()
     return (
-      <Button onClick={toggleColorMode}>
+      <IconButton onClick={toggleColorMode} icon={<MoonIcon />}>
         Toggle {colorMode === 'light' ? 'Dark' : 'Light'}
-      </Button>
+      </IconButton>
     )
   }
 
