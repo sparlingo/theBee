@@ -2,7 +2,6 @@ import { InfoIcon, MoonIcon, SunIcon } from '@chakra-ui/icons'
 import {
   Avatar,
   Box,
-  Button,
   Drawer,
   DrawerContent,
   DrawerOverlay,
@@ -20,6 +19,8 @@ import { FaBell, FaClipboardCheck, FaRss } from 'react-icons/fa'
 import { FiMenu } from 'react-icons/fi'
 import { HiCode, HiCollection } from 'react-icons/hi'
 import { MdHome } from 'react-icons/md'
+
+import { Link, routes } from '@redwoodjs/router'
 
 const ChakraLayout = ({ children }) => {
   const sidebar = useDisclosure()
@@ -88,7 +89,9 @@ const ChakraLayout = ({ children }) => {
         color="brand.700"
         aria-label="Main Navigation"
       >
-        <NavItem icon={MdHome}>Home</NavItem>
+        <Link to={routes.home()}>
+          <NavItem icon={MdHome}>Home</NavItem>
+        </Link>
         <NavItem icon={FaRss}>Articles</NavItem>
         <NavItem icon={HiCollection}>Games</NavItem>
         <NavItem icon={FaClipboardCheck}>Scores</NavItem>
@@ -103,7 +106,10 @@ const ChakraLayout = ({ children }) => {
   function LightOrDark() {
     const { colorMode, toggleColorMode } = useColorMode()
     return (
-      <IconButton onClick={toggleColorMode} icon={<MoonIcon />}>
+      <IconButton
+        onClick={toggleColorMode}
+        icon={colorMode == 'light' ? <MoonIcon /> : <SunIcon />}
+      >
         Toggle {colorMode === 'light' ? 'Dark' : 'Light'}
       </IconButton>
     )
